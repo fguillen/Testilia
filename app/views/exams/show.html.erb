@@ -1,0 +1,52 @@
+<% title "Exam" %>
+
+<p>
+  <strong>Kind:</strong>
+  <%=h @exam.kind %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%=h @exam.name %>
+</p>
+
+<% form_for @test_session do |f| %>
+  <%= f.text_field :exam_id %>
+  <% @test_session.exam.cells.each do |cell| %>
+  <div class="question">
+    <h1><%= cell.position %>. <%= cell.question.subject %></h1>
+    <h2><%= cell.question.category %></h2>
+    <% f.fields_for :answers, @test_session.answers.find_or_initialize_by_question_id( cell.question.id ) do |builder| %>
+      <%= builder.text_field :question_id %>
+      <ul class="answers">
+        <li>
+          <%= builder.radio_button :selected, 'a' %>
+          <%= builder.label :selected, "A. #{cell.question.answer_a}" %>
+        </li>
+      
+        <li>
+          <%= builder.radio_button :selected, 'b' %>
+          <%= builder.label :selected, "B. #{cell.question.answer_b}" %>
+        </li>
+      
+        <li>
+          <%= builder.radio_button :selected, 'c' %>
+          <%= builder.label :selected, "C. #{cell.question.answer_c}" %>
+        </li>
+      
+        <li>
+          <%= builder.radio_button :selected, 'd' %>
+          <%= builder.label :selected, "D. #{cell.question.answer_d}" %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+  <% end %>
+  
+  <%= f.submit %>
+<% end %>
+
+<p>
+  <%= link_to "Edit", edit_exam_path(@exam) %> |
+  <%= link_to "Destroy", @exam, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", exams_path %>
+</p>

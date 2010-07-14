@@ -1,0 +1,53 @@
+<% title "#{@exam.kind} | #{@exam.name}" %>
+
+<% form_for [@exam, @test_session] do |f| %>
+
+<div id="summary">
+  <ul>
+  <% @test_session.exam.cells.each do |cell| %>
+    <% answer = @test_session.answers.find_or_initialize_by_question_id( cell.question.id ) %>
+    <li class="<%= answer.status %>"><%= link_to "#{cell.position}) #{cell.question.category}", "#question-#{cell.position}" %></li>
+  <% end %>
+  </ul>
+</div>
+
+<div id="exam">
+  <% @test_session.exam.cells.each do |cell| %>
+    <% f.fields_for :answers, @test_session.answers.find_or_initialize_by_question_id( cell.question.id ) do |builder| %>
+      <%= builder.hidden_field :question_id %>
+      <a name="question-<%= cell.position %>"></a>
+      <div class="question <%= builder.object.status %>">
+        <div class="header">
+          <h2><%= cell.question.category %></h2>
+          <h1><span class="number"><%= cell.position %>.</span> <%= cell.question.subject %></h1>
+        </div>
+
+        <ul class="answers">
+          <% %w( a b c d ).each do |letter| %>
+            <li class="<%= builder.object.question.answer_correct == letter ? 'correct' : 'no-correct' %>">
+              <label>
+                <%= builder.radio_button :selected, letter %>
+                <span class="letter"><%= letter.upcase %>.</span> <%= cell.question.send( "answer_#{letter}" ) %>
+              </label>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>  
+</div>
+
+<div id="controls">
+  <% if !@test_session.new_record? %>
+  <div id="results">
+    <div class="errors">Errors: <%= @test_session.answers.status( 'error' ).count %></div>
+    <div class="oks">Oks: <%= @test_session.answers.status( 'ok' ).count %></div>
+    <div class="empties">Empties: <%= @test_session.answers.status( 'empty' ).count %></div>
+  </div>
+  <% end %>
+  <div id="submit">
+    <%= f.submit %>
+  </div>
+</div>
+
+<% end %>

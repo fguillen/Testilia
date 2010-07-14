@@ -1,0 +1,40 @@
+<% title "Question" %>
+
+<p>
+  <strong>Subject:</strong>
+  <%=h @question.subject %>
+</p>
+<p>
+  <strong>Answer 1:</strong>
+  <%=h @question.answer_a %>
+</p>
+<p>
+  <strong>Answer 2:</strong>
+  <%=h @question.answer_b %>
+</p>
+<p>
+  <strong>Answer 3:</strong>
+  <%=h @question.answer_c %>
+</p>
+<p>
+  <strong>Answer 4:</strong>
+  <%=h @question.answer_d %>
+</p>
+<p>
+  <strong>Answer Correct:</strong>
+  <%=h @question.answer_correct %>
+</p>
+<p>
+  <strong>Category:</strong>
+  <%=h @question.category %>
+</p>
+<p>
+  <strong>Level:</strong>
+  <%=h @question.level %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_question_path(@question) %> |
+  <%= link_to "Destroy", @question, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", questions_path %>
+</p>

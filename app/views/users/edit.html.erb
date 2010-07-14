@@ -1,0 +1,13 @@
+
+
+<% form_for @user do |f| %>
+  <%= f.error_messages %>
+  
+  <div class="form-block">
+    <h1>Edit User</h1>
+    <%= render :partial => "form", :object => f %>
+    <%= f.submit "Update" %>
+  </div>
+  
+<% end %>
+

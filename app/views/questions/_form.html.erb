@@ -1,0 +1,36 @@
+<% form_for @question do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
+  </p>
+  <p>
+    <%= f.label :answer_a %><br />
+    <%= f.text_field :answer_a %>
+  </p>
+  <p>
+    <%= f.label :answer_b %><br />
+    <%= f.text_field :answer_b %>
+  </p>
+  <p>
+    <%= f.label :answer_c %><br />
+    <%= f.text_field :answer_c %>
+  </p>
+  <p>
+    <%= f.label :answer_d %><br />
+    <%= f.text_field :answer_d %>
+  </p>
+  <p>
+    <%= f.label :answer_correct %><br />
+    <%= f.text_field :answer_correct %>
+  </p>
+  <p>
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </p>
+  <p>
+    <%= f.label :level %><br />
+    <%= f.text_field :level %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

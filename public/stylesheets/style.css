@@ -1,0 +1,106 @@
+/* Exam form */
+
+#exam{
+margin-left: 180px;
+}
+
+.question{
+margin: 0px 0px 40px 0px;
+}
+
+.question h2{
+margin: 0px;
+font-size: 10px;
+}
+
+.question .header{
+padding: 5px;
+background-color: #f9f9f9;
+border-bottom: 1px solid #D9D9D9;
+}
+
+.question h1{
+margin: 0px;
+font-size: 14px;
+font-weight: bold;
+}
+
+.question h1 .number{
+color: #a1a1a1;
+font-style: italic;
+}
+
+ul.answers{
+list-style: none;
+margin: 10px 0px 10px 20px;
+padding: 0px;
+}
+
+ul.answers li .letter{
+font-weight: bold;
+color: #a1a1a1;
+font-style: italic;
+}
+
+ul.answers li:hover{
+background-color: #f4f4f4;
+}
+
+.question.ok li.correct{
+background-color: #B7FF42;
+}
+
+
+.question.error li.correct{
+background-color: #fba9a9
+}
+
+#summary{
+float: left;
+width: 150px;
+}
+
+#summary ul{
+list-style: none;
+margin: 0px;
+padding: 0px;
+font-size: 10px;
+}
+
+#summary li.ok{
+background-color: #B7FF42;
+}
+
+#summary li.error{
+background-color: #fba9a9
+}
+
+#summary a{
+color: black;
+text-decoration: none;
+}
+
+
+#summary a:hover{
+text-decoration: underline;
+}
+
+#controls{
+padding: 10px;
+position: fixed;
+bottom: 0px;
+left: 0px;
+text-align: right;
+background-color: #f9f9f9;
+border-top: 1px solid #D9D9D9;
+width: 100%;
+}
+
+#controls>div{
+margin-right: 100px;
+}
+
+#controls #results>div{
+float: left;
+margin-right: 20px;
+}

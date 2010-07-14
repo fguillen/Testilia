@@ -1,0 +1,22 @@
+<% title "Exams" %>
+
+<% @exams.each do |exam| %>
+<div class="exam">
+  <h1><%= exam.name %></h1>
+  <h2><%= exam.kind %></h2>
+  <ul class="test_sessions">
+    <% exam.test_sessions.find(:all, :conditions => {:user_id => current_user.id} ).each do |test_session| %>
+      <li>
+        <%= link_to test_session.updated_at.to_s(:db), [exam, test_session] %> 
+        | <%= test_session.status %>
+        | Errors: <%= test_session.answers.status( 'error' ).count %>
+        | Oks: <%= test_session.answers.status( 'ok' ).count %>
+        | Empties: <%= test_session.answers.status( 'empty' ).count %>
+      </li>
+    <% end %>
+  </ul>
+  <div>
+    <%= link_to 'New Session', new_exam_test_session_path( exam ) %>
+  </div>
+</div>
+<% end %>

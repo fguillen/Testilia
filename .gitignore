@@ -1,6 +1,6 @@
 log/*.log
 tmp
-config/database.yml
+#config/database.yml
 db/schema.rb
 db/*.sqlite3
 public/javascripts/all.js

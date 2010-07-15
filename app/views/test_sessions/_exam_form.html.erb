@@ -40,9 +40,9 @@
 <div id="controls">
   <% if !@test_session.new_record? %>
   <div id="results">
-    <div class="errors">Errors: <%= @test_session.answers.status( 'error' ).count %></div>
-    <div class="oks">Oks: <%= @test_session.answers.status( 'ok' ).count %></div>
-    <div class="empties">Empties: <%= @test_session.answers.status( 'empty' ).count %></div>
+    <div class="errors">Errores: <%= @test_session.answers.status( 'error' ).count %></div>
+    <div class="oks">Aciertos: <%= @test_session.answers.status( 'ok' ).count %></div>
+    <div class="empties">Sin Contestart: <%= @test_session.answers.status( 'empty' ).count %></div>
   </div>
   <% end %>
   

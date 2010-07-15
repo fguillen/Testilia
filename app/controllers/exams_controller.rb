@@ -1,7 +1,7 @@
 class ExamsController < ApplicationController
-  before_filter :require_user
+  # before_filter :require_user
   
   def index
-    @exams = Exam.all( :order => :position)
+    @exams = Exam.find( :all, :conditions => {:kind => 'Official PER'}, :order => :position)
   end
 end

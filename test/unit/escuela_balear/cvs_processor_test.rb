@@ -3,15 +3,15 @@ require 'test_helper'
 
 
 class EscuelaBalear::CVSProcessorTest < Test::Unit::TestCase
-  def test_html_to_cvs
-    File.open( "/tmp/test.cvs", 'w') do |f|
-      f.write EscuelaBalear::CVSProcessor.html_to_cvs( "#{RAILS_ROOT}/test/fixtures/escuela_balear/test_2.html" )
-    end
-  end
-  
-  def test_convert_all_html_to_cvs
-    EscuelaBalear::CVSProcessor.convert_all_html_to_cvs
-  end
+  # def test_html_to_cvs
+  #   File.open( "/tmp/test.cvs", 'w') do |f|
+  #     f.write EscuelaBalear::CVSProcessor.html_to_cvs( "#{RAILS_ROOT}/test/fixtures/escuela_balear/test_2.html" )
+  #   end
+  # end
+  # 
+  # def test_convert_all_html_to_cvs
+  #   EscuelaBalear::CVSProcessor.convert_all_html_to_cvs
+  # end
   
   def test_convert_question_html_to_cvs
     question_html_1 = File.read( "#{RAILS_ROOT}/test/fixtures/escuela_balear/question_1.html" )

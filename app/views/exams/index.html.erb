@@ -1,22 +1,28 @@
-<% title "Exams" %>
+<% title "Todos los Tests" %>
 
 <% @exams.each do |exam| %>
 <div class="exam">
-  <h1><%= exam.name %></h1>
-  <h2><%= exam.kind %></h2>
+  <div class="header">
+    <h2><%= exam.kind %></h2>
+    <h1><%= exam.name %></h1>
+  </div>
+
+  <% if current_user %>
   <ul class="test_sessions">
-    <% exam.test_sessions.find(:all, :conditions => {:user_id => current_user.id} ).each do |test_session| %>
-      <li>
+    <% exam.test_sessions.find(:all, :conditions => {:user_id => current_user.id}, :order => :updated_at ).each do |test_session| %>
+      <li class="<%= cycle('odd', 'even') %>">
         <%= link_to test_session.updated_at.to_s(:db), [exam, test_session] %> 
         | <%= test_session.status %>
-        | Errors: <%= test_session.answers.status( 'error' ).count %>
-        | Oks: <%= test_session.answers.status( 'ok' ).count %>
-        | Empties: <%= test_session.answers.status( 'empty' ).count %>
+        | Errores: <%= test_session.answers.status( 'error' ).count %>
+        | Aciertos: <%= test_session.answers.status( 'ok' ).count %>
+        | Sin Contestar: <%= test_session.answers.status( 'empty' ).count %>
       </li>
     <% end %>
   </ul>
-  <div>
-    <%= link_to 'New Session', new_exam_test_session_path( exam ) %>
-  </div>
+  <% end %>
+  
+  <ul class="admin-links">
+    <li><%= link_to 'Nueva sesión de este Test', new_exam_test_session_path( exam ) %></li>
+  </ul>
 </div>
 <% end %>

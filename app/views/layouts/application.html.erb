@@ -6,10 +6,23 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <%= stylesheet_link_tag 'application', 'style', :media => "screen" %>
     <%= stylesheet_link_tag 'style', 'print', :media => "print" %>
+    <%= javascript_include_tag 'jquery-1.4.2.min.js' %>
     <%= yield(:head) %>
   </head>
   <body>
     <div id="container">
+      <div id="header">
+        <ul id="menu">
+          <li><%= link_to 'Todos los tests', exams_path %></li>
+          <% if current_user %>
+            <li><%= link_to 'Salir', logout_path %></li>
+          <% else %>
+            <li><%= link_to 'Login', login_path %></li>
+            <li><%= link_to 'Crear Usuario', new_user_path %> (Creando un usuario podrás guardar tests a medio hacer)</li>
+          <% end %>
+        </ul>
+      </div>
+      
       <%- flash.each do |name, msg| -%>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <%- end -%>
@@ -17,8 +30,15 @@
       <%- if show_title? -%>
         <h1><%=h yield(:title) %></h1>
       <%- end -%>
-      
-      <%= yield %>
+      <div id="content">
+        <%= yield %>
+      </div>
+      <div id="footer">
+        <p>Este es un proyecto experimental de <%= link_to "Fernando Guillen", 'http://fernandoguillen.info'%>.</p>
+        <p>Puedes consultar el código fuente en el <%= link_to "repositorio de github", 'http://github.com/fguillen/Testilia' %>.</p>
+        <p>Fuentes de los tests <%= link_to 'Escuela Balear Naútica', 'http://www.escuelabalearnautica.com' %> y 
+          <%= link_to 'Títulos Naúticos', 'http://www.titulosnauticos.net' %>.</p>
+      </div>
     </div>
   </body>
 </html>

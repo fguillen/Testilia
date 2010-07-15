@@ -5,11 +5,11 @@
 </div>
 
 <div class="form-field">
-  <%= form.label :password, form.object.new_record? ? nil : "Password" %>
+  <%= form.label :password, "Contraseña" %>
   <%= form.password_field :password %>
 </div>
 
 <div class="form-field">
-  <%= form.label :password_confirmation %>
+  <%= form.label :password_confirmation, 'Contraseña Confirmación' %>
   <%= form.password_field :password_confirmation %>
 </div>

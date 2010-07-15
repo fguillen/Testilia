@@ -11,7 +11,7 @@ class UserSessionsControllerTest < ActionController::TestCase
     post :create, :user_session => { :email => user.email, :password => 'wadus' }
     assert user_session = UserSession.find
     assert_equal user, user_session.user
-    assert_redirected_to users_path
+    assert_redirected_to exams_path
     assert_not_nil( flash[:notice] )
   end
   

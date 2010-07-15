@@ -1,6 +1,6 @@
 class TestSessionsController < ApplicationController
   before_filter :charge_exam
-  before_filter :require_user
+  before_filter :require_user, :except => [:new]
    
   def show
     @test_session = TestSession.find(params[:id])
@@ -15,7 +15,7 @@ class TestSessionsController < ApplicationController
     @test_session = @exam.test_sessions.new(params[:test_session].merge( :user_id => current_user.id))
     if @test_session.save
       @test_session.touch
-      flash[:notice] = "Successfully created test_session."
+      flash[:notice] = "Sesión de Test guardada."
       redirect_to [@exam, @test_session]
     else
       render :action => 'show'
@@ -28,10 +28,10 @@ class TestSessionsController < ApplicationController
   end
   
   def update
-    puts "controller update"
     @test_session = TestSession.find(params[:id])
     if @test_session.update_attributes(params[:test_session])
-      flash[:notice] = "Successfully updated test_session."
+      @test_session.touch
+      flash[:notice] = "Sesión de Test guardada."
       redirect_to [@exam, @test_session]
     else
       render :action => 'show'

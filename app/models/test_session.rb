@@ -9,8 +9,6 @@ class TestSession < ActiveRecord::Base
     
   private
     def update_status
-      puts "updating status"
-      puts "self.answers.status('empty').count: #{self.answers.status('empty').count}"
       self.status = self.answers.status('empty').count == 0 ? 'completed' : 'no-completed'
     end  
 end

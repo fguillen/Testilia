@@ -17,7 +17,7 @@ class UsersControllerTest < ActionController::TestCase
       post :create, :user => { :email => "email@email.com", :password => "benrocks", :password_confirmation => "benrocks" }
     end
     
-    assert_redirected_to users_path
+    assert_redirected_to exams_path
     assert_not_nil( flash[:notice] )
   end
   

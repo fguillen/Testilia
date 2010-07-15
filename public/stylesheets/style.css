@@ -1,5 +1,10 @@
 /* Exam form */
 
+
+h1{
+font-size: 18px;
+}
+
 #exam{
 margin-left: 180px;
 }
@@ -52,7 +57,7 @@ background-color: #B7FF42;
 
 
 .question.error li.correct{
-background-color: #fba9a9
+background-color: #fba9a9;
 }
 
 #summary{
@@ -103,4 +108,100 @@ margin-right: 100px;
 #controls #results>div{
 float: left;
 margin-right: 20px;
+}
+
+
+
+/* Index Exams */
+
+.exam {
+border: 1px solid #D9D9D9;
+margin-bottom: 20px;
+}
+
+.exam .header{
+padding: 5px;
+background-color: #f9f9f9;
+border-bottom: 1px solid #D9D9D9;
+}
+
+.exam .header h2{
+margin: 0px;
+font-size: 10px;
+}
+
+.exam .header h1{
+margin: 0px;
+font-size: 14px;
+font-weight: bold;
+}
+
+.exam ul.test_sessions{
+list-style: none;
+margin: 0px;
+padding: 0px;
+font-size: 14px;
+}
+
+.exam ul.test_sessions li{
+padding: 5px;
+}
+
+.exam ul.test_sessions li.odd{
+background-color: #f9f9f9;
+}
+
+.exam ul.test_sessions li.even{
+background-color: #D9D9D9;
+}
+
+ul.admin-links{
+list-style: none;
+padding: 0px;
+margin: 0px;
+}
+
+ul.admin-links li{
+padding: 10px;
+}
+
+
+/* Forms */
+.form-block{
+border: 1px solid #D9D9D9;
+background-color: #f9f9f9;
+padding: 10px;
+}
+
+.form-block label{
+display: block;
+
+}
+
+.form-block input[type='text'],
+.form-block input[type='password']{
+border: 1px solid #D9D9D9;
+font-size: 14px;
+padding: 5px;
+}
+.form-element,
+.form-field{
+margin-bottom: 10px;
+}
+
+.form-block input[type='submit']{
+font-size: 20px;
+margin: 10px;
+}
+
+/* Footer */
+
+#footer{
+margin-top: 100px;
+background-color: #D9D9D9;
+padding: 5px;
+}
+
+#footer p{
+margin: 0px;
 }

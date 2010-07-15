@@ -6,7 +6,7 @@
   <ul>
   <% @test_session.exam.cells.each do |cell| %>
     <% answer = @test_session.answers.find_or_initialize_by_question_id( cell.question.id ) %>
-    <li class="<%= answer.status %>"><%= link_to "#{cell.position}) #{cell.question.category}", "#question-#{cell.position}" %></li>
+    <li class="<%= answer.status %>" id="question-summary-<%= cell.id %>"><%= link_to "#{cell.position}) #{cell.question.category}", "#question-#{cell.position}" %></li>
   <% end %>
   </ul>
 </div>
@@ -16,7 +16,7 @@
     <% f.fields_for :answers, @test_session.answers.find_or_initialize_by_question_id( cell.question.id ) do |builder| %>
       <%= builder.hidden_field :question_id %>
       <a name="question-<%= cell.position %>"></a>
-      <div class="question <%= builder.object.status %>">
+      <div class="question <%= builder.object.status %>" id="question-<%= cell.id %>">
         <div class="header">
           <h2><%= cell.question.category %></h2>
           <h1><span class="number"><%= cell.position %>.</span> <%= cell.question.subject %></h1>
@@ -45,9 +45,35 @@
     <div class="empties">Empties: <%= @test_session.answers.status( 'empty' ).count %></div>
   </div>
   <% end %>
+  
   <div id="submit">
-    <%= f.submit %>
+    <a href="#corregir" onclick="correct()">Corregir</a>
+    <% if current_user %>
+      <%= f.submit %>
+    <% end %>
   </div>
 </div>
 
 <% end %>
+
+<script>
+  function correct(){
+    $('.question').each( function(index){
+      
+      li_selected = $("input:checked", this).parents("li");
+      if( li_selected.length != 0 ) {
+        li_correct = $('.answers .correct', this);
+        li_summary = $('#question-summary-' + $(this).attr('id').replace( 'question-', '' ) );
+        if( li_selected[0] == li_correct[0] ){
+          li_selected.css( 'background-color', '#B7FF42' );
+          li_summary.css( 'background-color', '#B7FF42' );
+        } else {
+          li_correct.css( 'background-color', '#fba9a9' );  
+          li_summary.css( 'background-color', '#fba9a9' );
+        }
+      }
+      
+      
+    });
+  }
+</script>

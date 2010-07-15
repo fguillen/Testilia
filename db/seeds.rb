@@ -12,7 +12,7 @@ indexes = File.read( "#{RAILS_ROOT}/etc/escuela_balear_tests/tests_index_per.txt
 puts "cvs_files: #{cvs_files}"
 
 Dir.glob( cvs_files ).each do |cvs_path|
-  puts "procession: #{cvs_path}"
+  puts "processing: #{cvs_path}"
   
   exam_id = File.basename( cvs_path, '.cvs' ).scan( /tests_balear_(\d+)/ )[0].to_s
   exam_name = indexes.scan( /^(.+) => \/tests\/test.php\?id=#{exam_id}$/ )[0].to_s
@@ -31,3 +31,7 @@ Dir.glob( cvs_files ).each do |cvs_path|
 end
 
 user = Factory(:user, :email => 'email@email.com', :password => 'pass', :password_confirmation => 'pass' )
+
+puts "User created:"
+puts "Email: email@emai.com"
+puts "Password: pass"

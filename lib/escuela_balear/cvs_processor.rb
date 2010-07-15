@@ -75,7 +75,7 @@ module EscuelaBalear
         puts "writing: #{cvs_file_path}"
 
         File.open( cvs_file_path, 'w' ) do |f|
-          f.write( cvs_content )
+          f.write( Iconv.new('utf-8', 'iso-8859-1').iconv(cvs_content) )
         end
       end
     end

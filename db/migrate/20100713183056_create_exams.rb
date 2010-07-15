@@ -3,6 +3,7 @@ class CreateExams < ActiveRecord::Migration
     create_table :exams do |t|
       t.string :kind
       t.string :name
+      t.integer :position, :null => false, :default => 0
       t.timestamps
     end
   end

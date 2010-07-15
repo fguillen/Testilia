@@ -15,24 +15,19 @@ Dir.glob( cvs_files ).each do |cvs_path|
   puts "procession: #{cvs_path}"
   
   exam_id = File.basename( cvs_path, '.cvs' ).scan( /tests_balear_(\d+)/ )[0].to_s
-  puts "exam_id: #{exam_id}"
   exam_name = indexes.scan( /^(.+) => \/tests\/test.php\?id=#{exam_id}$/ )[0].to_s
-  puts "exam_name: #{exam_name}"
-  exam_name = "Test #{exam_id}"  if exam_name.blank?
-  puts "exam_name: #{exam_name}"
+  exam_kind = "Official"
   
-  exam = Factory( :exam, :name => exam_name )
-
-  # questions
-  File.readlines( cvs_path ).each_with_index do |line, index|
-    question = Question.create_from_cvs( line )
-    exam.cells.create!(
-      :position => index + 1,
-      :question => question
-    )
+  if( exam_name.blank? )
+    exam_name = "Test #{exam_id}"
+  else
+    exam_kind = "Official PER"
   end
   
-  puts "Exam created: '#{exam_name}'"
+  exam = Exam.create_from_cvs( exam_name, cvs_path )
+  exam.update_attributes( :kind => exam_kind, :position => exam_id )
+  
+  puts "Exam created: '#{exam.kind} | #{exam.name}'"
 end
 
 user = Factory(:user, :email => 'email@email.com', :password => 'pass', :password_confirmation => 'pass' )

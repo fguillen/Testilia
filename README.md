@@ -12,5 +12,5 @@ CVS exams digester, user management, user history tracking.
     cd Testilia
     rake db:migrate
     rake db:seed
-    rake tests
+    rake test
     script/server

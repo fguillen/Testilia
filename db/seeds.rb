@@ -1,10 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#   
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Major.create(:name => 'Daley', :city => cities.first)
+# Feeding the database with example tests.. 
+# extracted from http://http://www.escuelabalearnautica.com/
+# and http://titulosnauticos.net
 
 cvs_files = "#{RAILS_ROOT}/etc/escuela_balear_tests/cvs/*.cvs"
 indexes = File.read( "#{RAILS_ROOT}/etc/escuela_balear_tests/tests_index_per.txt" )

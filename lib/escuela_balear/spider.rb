@@ -17,8 +17,8 @@ module EscuelaBalear
       agent = Mechanize.new
       agent.get( 'http://www.escuelabalearnautica.com/tests/index.php?login=1')
       form = agent.page.forms.first
-      form.username = 'FERNANDO GUILLEN'
-      form.password = '16586792'
+      form.username = 'XXX'
+      form.password = 'XXX'
       form.submit
       agent.post(
         'http://www.escuelabalearnautica.com/tests/test.php', 

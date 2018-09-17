@@ -11,6 +11,16 @@
     <%= stylesheet_link_tag 'style', 'print', :media => "print" %>
     <%= javascript_include_tag 'jquery-1.4.2.min.js' %>
     <%= yield(:head) %>
+
+    <!-- Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7503676968525608",
+        enable_page_level_ads: true
+      });
+    </script>
+
   </head>
   <body>
     <div id="container">
@@ -25,11 +35,11 @@
           <% end %>
         </ul>
       </div>
-      
+
       <%- flash.each do |name, msg| -%>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <%- end -%>
-      
+
       <%- if show_title? -%>
         <h1><%=h yield(:title) %></h1>
       <%- end -%>
@@ -39,11 +49,11 @@
       <div id="footer">
         <p>Este es un proyecto experimental de <%= link_to "Fernando Guillen", 'http://fernandoguillen.info'%>.</p>
         <p>Puedes consultar el código fuente en el <%= link_to "repositorio de github", 'http://github.com/fguillen/Testilia' %>.</p>
-        <p>Fuentes de los tests <%= link_to 'Escuela Balear Naútica', 'http://www.escuelabalearnautica.com' %> y 
+        <p>Fuentes de los tests <%= link_to 'Escuela Balear Naútica', 'http://www.escuelabalearnautica.com' %> y
           <%= link_to 'Títulos Naúticos', 'http://www.titulosnauticos.net' %>.</p>
       </div>
     </div>
-    
+
     <!-- analytics -->
     <script type="text/javascript">
 

@@ -1,11 +1,14 @@
 log/*.log
 tmp
-#config/database.yml
 db/schema.rb
 db/*.sqlite3
+db/data
 public/javascripts/all.js
 public/stylesheets/all.css
 public/paperclip
-#config/app_config.yml
-config/app_config.custom.yml
 .DS_Store
+.env
+.env.staging
+.env.production
+.env.development.local
+.env.*.local

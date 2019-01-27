@@ -1,0 +1,2 @@
+# ./crontab
+0 * * * * root /bin/bash -l -c 'echo date >> /tmp/cron_test.log'
